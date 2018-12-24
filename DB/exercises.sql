@@ -21,13 +21,13 @@ USE `exercisesdb` ;
 DROP TABLE IF EXISTS `workout` ;
 
 CREATE TABLE IF NOT EXISTS `workout` (
-  `id` INT NOT NULL AUTO_INCREMENT,
+  `id` INT GENERATED ALWAYS AS (),
   `name` VARCHAR(75) NOT NULL,
   `category` VARCHAR(45) NOT NULL,
-  `Description` VARCHAR(150) NOT NULL,
-  `Sets` INT NOT NULL,
+  `description` VARCHAR(150) NOT NULL,
+  `sets` INT NOT NULL,
   `reps` INT NOT NULL,
-  `rest` VARCHAR(25) NOT NULL,
+  `rest_in_min` INT NOT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
@@ -47,7 +47,7 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `exercisesdb`;
-INSERT INTO `workout` (`id`, `name`, `category`, `Description`, `Sets`, `reps`, `rest`) VALUES (1, 'curls', 'bicepts', 'grab a dumbell and lift it palms up while keeping your elbow in the same spot', 4, 10, '30');
+INSERT INTO `workout` (`id`, `name`, `category`, `description`, `sets`, `reps`, `rest_in_min`) VALUES (1, 'curls', 'bicepts', 'grab a dumbell and lift it palms up while keeping your elbow in the same spot', 4, 10, 30);
 
 COMMIT;
 

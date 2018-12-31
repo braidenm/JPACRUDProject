@@ -1,5 +1,8 @@
 package com.skilldistillery.exercises.data;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -56,6 +59,21 @@ public class ExercisesDAOImpl implements ExerciseDAO {
 		
 		
 		return em.find(Exercises.class, id);
+	}
+	@Override
+	public Set<Exercises> search(String words) {
+		words = "%"+words+"%";
+		words = words.replaceAll(" ", "% %");
+		String wordsarr[] = words.split(" ");
+		Set<Exercises> exerciseset = new HashSet<>();
+		
+		for (String searchword : wordsarr) {
+			String query = "select e from Exercises e where name like:search or category like:search";
+			exerciseset.addAll(em.createQuery(query, Exercises.class ).setParameter
+					("search", searchword).getResultList());
+		}
+		
+		return exerciseset;
 	}
 
 }

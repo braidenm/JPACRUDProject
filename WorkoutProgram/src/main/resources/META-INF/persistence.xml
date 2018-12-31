@@ -13,7 +13,7 @@
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/exercisesdb?useSSL=false" />
       <property name="javax.persistence.jdbc.user" value="exerciseuser"/>
       <property name="javax.persistence.jdbc.password" value="workout" />
-      <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver" />
+      <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
 
       <property name="hibernate.show_sql" value="false" />
       <property name="hibernate.format_sql" value="false" />

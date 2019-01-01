@@ -15,45 +15,50 @@
     <title>Create</title>
   </head>
   <body>
-  <header>
-  
-  Create a Work-Out Exercise
-  </header>
+	  <header>
+	  
+	  Create a Work-Out Exercise
+	  
+	  </header>
+	   <nav>
+		  	<ul>
+		  		<li><a  href="/.do">Home</a></li>
+		  		<li><a class="active" href="create.do">Create</a></li>
+		  	
+		  	</ul>
+		  </nav>
 
-	<div class="container" id="createpage">
-		<form action="create.do" method="post">
-			<div>
-				<label for="name">Name: </label>
-				<input id="name" name="name" maxlength="75" type="text"  required />
-			</div>
-			<div>
-				<label for="category">Category: </label>
-				<input id="category" name="category" maxlength="75" type="text"  required />
-			</div>
-			<div>
-				<label for="description">Description: </label>
-			<div>	
-				<textarea id="description" maxlength="250" name="description" required placeholder="Enter the Description" cols="35" rows="3"></textarea>
-			</div>
-			</div>
-			<div>
-				<label for="sets">Sets: </label>
-				<input id="sets" name="sets" type="number"  required min="1" />
-			</div>
-			<div>
-				<label for="reps">Reps: </label>
-				<input id="reps" name="reps" type="number"  required min="1" />
-			</div>
-			<div>
-				<label for="rest">Rest (in seconds): </label>
-				<input id="rest" name="rest" type="number"  required min="0" />
-			</div>
-			<input type="hidden" id="id" name="id" value="0"/>
-			<input type="submit" class="btn btn-primary" value="Create"/>
-		</form>
-		<form action="/.do">
-			<input type="submit" class="btn btn-primary" value="Home"/>
-		</form>
+		<div class="container" id="createpage">
+			<form action="create.do" method="post">
+				<div>
+					<label for="name">Name: </label>
+					<input id="name" name="name" maxlength="75" type="text"  required />
+				</div>
+				<div>
+					<label for="category">Category: </label>
+					<input id="category" name="category" maxlength="75" type="text"  required />
+				</div>
+				<div>
+					<label for="description">Description: </label>
+				<div>	
+					<textarea id="description" maxlength="250" name="description" required placeholder="Enter the Description" cols="35" rows="3"></textarea>
+				</div>
+				</div>
+				<div>
+					<label for="sets">Sets: </label>
+					<input id="sets" name="sets" type="number"  required min="1" />
+				</div>
+				<div>
+					<label for="reps">Reps: </label>
+					<input id="reps" name="reps" type="number"  required min="1" />
+				</div>
+				<div>
+					<label for="rest">Rest (in seconds): </label>
+					<input id="rest" name="rest" type="number"  required min="0" />
+				</div>
+				<input type="hidden" id="id" name="id" value="0"/>
+				<input type="submit" class="btn btn-primary" value="Create"/>
+			</form>
 	
 	</div>
 

@@ -57,25 +57,46 @@ public class WorkOutController {
 	}
 
 	@RequestMapping(path = "update.do", method = RequestMethod.GET)
-	public String updateInit(Model model, int id) {
+	public String updateInit(Model model, Integer id) {
 		model.addAttribute("exer", dao.get(id));
 		return "update";
 	}
 
 	@RequestMapping(path = "get.do", method = RequestMethod.POST)
-	public String get(int id, RedirectAttributes redir) {
-		redir.addFlashAttribute("exer", dao.get(id));
-		return "redirect:/.do";
+	public String get(Integer id, RedirectAttributes redir) {
+		Exercises exercise = dao.get(id);
+		boolean displayMessage = false;
+		if(exercise == null) {
+			displayMessage = true;
+			redir.addFlashAttribute("notFound", displayMessage );
+			return "redirect:/.do";
+		}
+		else {
+			redir.addFlashAttribute("notFound", displayMessage );
+			redir.addFlashAttribute("exer", exercise);
+			return "redirect:/.do";
+		}
 	}
 
 	@RequestMapping(path = "getall.do", method = RequestMethod.POST)
 	public String getAll(RedirectAttributes redir) {
-		redir.addFlashAttribute("exerList", dao.getAll());
-		return "redirect:/.do";
+		List<Exercises> exerList = dao.getAll();
+		boolean displayMessage = false;
+		if(exerList.isEmpty()) {
+			displayMessage = true;
+			redir.addFlashAttribute("notFound", displayMessage );
+			return "redirect:/.do";
+		}
+		else {
+			redir.addFlashAttribute("notFound", displayMessage );
+			redir.addFlashAttribute("exerList", exerList);
+			return "redirect:/.do";
+		}
 	}
 
 	@RequestMapping(path = "destroy.do", method = RequestMethod.POST)
 	public String destroy(@RequestParam("delete") Integer id, RedirectAttributes redir) {
+		
 		redir.addFlashAttribute("deleted", dao.destroy(id));
 		redir.addFlashAttribute("exerid", id);
 
@@ -86,10 +107,19 @@ public class WorkOutController {
 	public String search(@RequestParam("search") String search, RedirectAttributes redir) {
 		List<Exercises> exerciseList = new ArrayList<>();
 		exerciseList.addAll(dao.search(search));
-		redir.addFlashAttribute("exerList", exerciseList);
+		boolean displayMessage = false;
 		
-		
-		return "redirect:/.do";
+		if(exerciseList.isEmpty()) {
+			displayMessage = true;
+			redir.addFlashAttribute("notFound", displayMessage );
+			return "redirect:/.do";
+		}
+		else {
+			
+			redir.addFlashAttribute("notFound", displayMessage );
+			redir.addFlashAttribute("exerList", exerciseList);
+			return "redirect:/.do";
+		}
 	}
 	
 }

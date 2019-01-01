@@ -17,7 +17,16 @@
   <body>
 	  <header>
 	  	Update an Exercise
+	  	
 	  </header>
+   	  <nav>
+		  	<ul>
+		  		<li><a href="/.do">Home</a></li>
+		  		<li><a href="create.do">Create</a></li>
+		  		<li id="navUpdate" class="active">Update</li>
+		  	
+		  	</ul>
+	  </nav>
 
 	<div class="container" id="update">
 		<form action="update.do" method="post">
@@ -52,9 +61,6 @@
 				<input id="rest" name="rest" type="number" value="${exer.rest}" required min="0" />
 			</div>
 			<input type="submit" class="btn btn-primary" value="Update"/>
-		</form>
-		<form action="/.do">
-			<input type="submit" class="btn btn-primary" value="Home"/>
 		</form>
 	
 	</div>

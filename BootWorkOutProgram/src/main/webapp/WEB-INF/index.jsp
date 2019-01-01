@@ -16,10 +16,18 @@
   </head>
   <body>
   
-  <header>
-  Welcome to Work-Out Exercises MYSQL using JPA
-  
-  </header>
+	  <header>
+	  Welcome to Work-Out Exercises MYSQL using JPA
+	  
+		  
+	  
+	  </header>
+	 <nav>
+	  	<ul>
+	  		<li><a class="active" href="/.do">Home</a></li>
+	  		<li><a href="create.do">Create</a></li>
+	   	</ul>
+     </nav>
 
 	<div class="container">
 	
@@ -48,9 +56,6 @@
 				</div>
 				<div>
 				
-				<form action="create.do" method="get" id="create">
-					<input type="submit" class="btn btn-primary" value="Create Exercise" />
-				</form>
 				</div>
 				
 			</div>
@@ -124,9 +129,15 @@
 					</c:forEach>
 					</c:if>
 					<c:if test="${deleted }">
-				<div class="info">
-					Exercise ${exerid} Deleted
-				</div>
+						<div class="message">
+							Exercise ${exerid} Deleted
+						</div>
+					</c:if>
+					<c:if test="${notFound }">
+						<div class="message">
+							No Exercises Were Found
+						</div>
+					
 					</c:if>
 			
 			</div>

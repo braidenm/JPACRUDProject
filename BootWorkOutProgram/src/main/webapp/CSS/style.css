@@ -41,6 +41,7 @@ form{
 	margin: 10px;
 }
 
+
 input[type=text]:focus {
   background-color: lightblue;
   width: 100px;

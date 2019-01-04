@@ -11,7 +11,7 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-	<link href="/CSS/style.css" rel="stylesheet" type="text/css">
+	<link href="CSS/style.css" rel="stylesheet" type="text/css">
     <title>Create</title>
   </head>
   <body>
@@ -22,7 +22,7 @@
 	  </header>
 	   <nav>
 		  	<ul>
-		  		<li><a  href="/.do">Home</a></li>
+		  		<li><a  href="home.do">Home</a></li>
 		  		<li><a class="active" href="create.do">Create</a></li>
 		  	
 		  	</ul>
@@ -46,15 +46,15 @@
 				</div>
 				<div>
 					<label for="sets">Sets: </label>
-					<input id="sets" name="sets" type="number"  required min="1" />
+					<input id="sets" name="sets" type="number" value="4" required min="1" />
 				</div>
 				<div>
 					<label for="reps">Reps: </label>
-					<input id="reps" name="reps" type="number"  required min="1" />
+					<input id="reps" name="reps" type="number" value="10" required min="1" />
 				</div>
 				<div>
 					<label for="rest">Rest (in seconds): </label>
-					<input id="rest" name="rest" type="number"  required min="0" />
+					<input id="rest" name="rest" type="number" value="30"  required min="0" />
 				</div>
 				<input type="hidden" id="id" name="id" value="0"/>
 				<input type="submit" class="btn btn-primary" value="Create"/>

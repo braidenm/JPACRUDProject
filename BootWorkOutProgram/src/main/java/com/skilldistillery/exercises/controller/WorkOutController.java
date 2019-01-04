@@ -21,7 +21,7 @@ public class WorkOutController {
 	@Autowired
 	ExerciseDAO dao;
 
-	@RequestMapping("/.do")
+	@RequestMapping("home.do")
 	public String home() {
 		return "index";
 	}
@@ -36,7 +36,7 @@ public class WorkOutController {
 
 		redir.addFlashAttribute("exer", dao.create(exer));
 
-		return "redirect:/.do";
+		return "redirect:home.do";
 	}
 
 	@RequestMapping(path = "create.do", method = RequestMethod.GET)
@@ -53,7 +53,7 @@ public class WorkOutController {
 		System.out.println(exer);
 		exer = dao.update(exer.getId(), exer);
 		redir.addFlashAttribute("exer", exer);
-		return "redirect:/.do";
+		return "redirect:home.do";
 	}
 
 	@RequestMapping(path = "update.do", method = RequestMethod.GET)
@@ -69,12 +69,12 @@ public class WorkOutController {
 		if(exercise == null) {
 			displayMessage = true;
 			redir.addFlashAttribute("notFound", displayMessage );
-			return "redirect:/.do";
+			return "redirect:home.do";
 		}
 		else {
 			redir.addFlashAttribute("notFound", displayMessage );
 			redir.addFlashAttribute("exer", exercise);
-			return "redirect:/.do";
+			return "redirect:home.do";
 		}
 	}
 
@@ -85,12 +85,12 @@ public class WorkOutController {
 		if(exerList.isEmpty()) {
 			displayMessage = true;
 			redir.addFlashAttribute("notFound", displayMessage );
-			return "redirect:/.do";
+			return "redirect:home.do";
 		}
 		else {
 			redir.addFlashAttribute("notFound", displayMessage );
 			redir.addFlashAttribute("exerList", exerList);
-			return "redirect:/.do";
+			return "redirect:home.do";
 		}
 	}
 
@@ -100,7 +100,7 @@ public class WorkOutController {
 		redir.addFlashAttribute("deleted", dao.destroy(id));
 		redir.addFlashAttribute("exerid", id);
 
-		return "redirect:/.do";
+		return "redirect:home.do";
 	}
 
 	@RequestMapping(path = "search.do", method = RequestMethod.POST)
@@ -112,13 +112,13 @@ public class WorkOutController {
 		if(exerciseList.isEmpty()) {
 			displayMessage = true;
 			redir.addFlashAttribute("notFound", displayMessage );
-			return "redirect:/.do";
+			return "redirect:home.do";
 		}
 		else {
 			
 			redir.addFlashAttribute("notFound", displayMessage );
 			redir.addFlashAttribute("exerList", exerciseList);
-			return "redirect:/.do";
+			return "redirect:home.do";
 		}
 	}
 	

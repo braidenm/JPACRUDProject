@@ -15,7 +15,7 @@
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
 	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
 	crossorigin="anonymous">
-<link href="/CSS/style.css" rel="stylesheet" type="text/css">
+<link href="CSS/style.css" rel="stylesheet" type="text/css">
 <title>SQL CRUD</title>
 </head>
 <body>
@@ -23,7 +23,7 @@
 	<header> Welcome to Work-Out Exercises MYSQL using JPA </header>
 	<nav>
 		<ul>
-			<li><a class="active" href="/.do">Home</a></li>
+			<li><a class="active" href="home.do">Home</a></li>
 			<li><a href="create.do">Create</a></li>
 		</ul>
 	</nav>

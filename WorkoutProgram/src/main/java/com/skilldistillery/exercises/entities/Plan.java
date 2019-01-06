@@ -6,18 +6,18 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Day {
-
+public class Plan {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private String name;
-	private String day;
 	
 	
 	public int getId() {
 		return id;
 	}
+	
 	public void setId(int id) {
 		this.id = id;
 	}
@@ -27,17 +27,12 @@ public class Day {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getDay() {
-		return day;
-	}
-	public void setDay(String day) {
-		this.day = day;
-	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + id;
+		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		return result;
 	}
 	@Override
@@ -48,24 +43,27 @@ public class Day {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Day other = (Day) obj;
+		Plan other = (Plan) obj;
 		if (id != other.id)
+			return false;
+		if (name == null) {
+			if (other.name != null)
+				return false;
+		} else if (!name.equals(other.name))
 			return false;
 		return true;
 	}
-	public Day(int id, String name, String day) {
+	public Plan(int id, String name) {
 		super();
 		this.id = id;
 		this.name = name;
-		this.day = day;
 	}
-	public Day() {
+	public Plan() {
 		super();
 	}
 	@Override
 	public String toString() {
-		return "Day [id=" + id + ", name=" + name + ", day=" + day + "]";
+		return "Plan [id=" + id + ", name=" + name + "]";
 	}
-	
-	
+
 }

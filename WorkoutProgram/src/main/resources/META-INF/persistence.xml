@@ -8,6 +8,8 @@
     <provider>org.hibernate.jpa.HibernatePersistenceProvider
     </provider>
     <class>com.skilldistillery.exercises.entities.Exercises</class>
+    <class>com.skilldistillery.exercises.entities.Plan</class>
+    <class>com.skilldistillery.exercises.entities.Day</class>
 
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/exercisesdb?useSSL=false" />

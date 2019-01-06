@@ -1,14 +1,20 @@
 package com.skilldistillery.exercises.data;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.transaction.Transactional;
+
+import org.springframework.stereotype.Service;
 
 import com.skilldistillery.exercises.entities.Plan;
 
+@Service
+@Transactional
 public class PlanDAOImpl implements PlanDAO {
 	private static EntityManagerFactory emf = Persistence.createEntityManagerFactory("ExercisesDB");
 	private EntityManager em = emf.createEntityManager();
@@ -55,6 +61,15 @@ public class PlanDAOImpl implements PlanDAO {
 		
 		return em.find(Plan.class, id);
 	}
+	
+	@Override
+	public List<Plan> getAll() {
+		
+		String query = "select p from Plan p";
+		
+		return em.createQuery(query, Plan.class).getResultList();
+	}
+	
 	@Override
 	public Set<Plan> search(String words) {
 		words = "%"+words+"%";

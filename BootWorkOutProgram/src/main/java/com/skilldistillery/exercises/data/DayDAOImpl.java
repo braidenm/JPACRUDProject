@@ -1,14 +1,20 @@
 package com.skilldistillery.exercises.data;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.transaction.Transactional;
+
+import org.springframework.stereotype.Service;
 
 import com.skilldistillery.exercises.entities.Day;
 
+@Service
+@Transactional
 public class DayDAOImpl implements DayDAO {
 	private static EntityManagerFactory emf = Persistence.createEntityManagerFactory("ExercisesDB");
 	private EntityManager em = emf.createEntityManager();
@@ -56,6 +62,15 @@ public class DayDAOImpl implements DayDAO {
 		
 		return em.find(Day.class, id);
 	}
+	
+	@Override
+	public List<Day> getAll() {
+		
+		String query = "select d from Day d";
+		
+		return em.createQuery(query, Day.class).getResultList();
+	}
+	
 	@Override
 	public Set<Day> search(String words) {
 		words = "%"+words+"%";

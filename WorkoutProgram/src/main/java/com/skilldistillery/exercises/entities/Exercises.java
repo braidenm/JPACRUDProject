@@ -1,10 +1,13 @@
 package com.skilldistillery.exercises.entities;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -22,6 +25,17 @@ public class Exercises {
 	private int reps;
 	@Column(name="rest_in_sec")
 	private int rest;
+	@ManyToMany(mappedBy="exercises")
+	private List<Day> days;
+	
+	
+	
+	public List<Day> getDays() {
+		return days;
+	}
+	public void setDays(List<Day> days) {
+		this.days = days;
+	}
 	public int getId() {
 		return id;
 	}

@@ -112,13 +112,18 @@ class ExerciseTest {
 		Set<Exercises> exercisteset = dao.search(keyword);
 		
 		assertFalse( exercisteset.isEmpty());
-		assertEquals(4, exercisteset.size());
+		assertEquals(11, exercisteset.size());
 		assertTrue(exercisteset.contains(dao.get(1)));
-		assertTrue(exercisteset.contains(dao.get(2)));
-		assertTrue(exercisteset.contains(dao.get(3)));
-		assertTrue(exercisteset.contains(dao.get(4)));
 		
 		
+	}
+	@Test
+	public void test_many_to_many_mapping_exercises() {
+		ex = dao.get(1);
+		
+		assertNotNull(ex.getDays());
+		assertFalse(ex.getDays().isEmpty());
+		assertEquals(1, ex.getDays().size());
 	}
 
 }

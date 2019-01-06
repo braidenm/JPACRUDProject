@@ -1,9 +1,14 @@
 package com.skilldistillery.exercises.entities;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 
 @Entity
 public class Plan {
@@ -13,7 +18,21 @@ public class Plan {
 	private int id;
 	private String name;
 	
+	@ManyToMany
+	@JoinTable(name="day_plan",
+			joinColumns=@JoinColumn(name="plan_id"),
+			inverseJoinColumns=@JoinColumn(name="day_id"))
+	private List<Day> days;
 	
+	
+	public List<Day> getDays() {
+		return days;
+	}
+
+	public void setDays(List<Day> days) {
+		this.days = days;
+	}
+
 	public int getId() {
 		return id;
 	}

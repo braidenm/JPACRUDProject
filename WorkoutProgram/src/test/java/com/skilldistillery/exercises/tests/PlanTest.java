@@ -1,6 +1,7 @@
 package com.skilldistillery.exercises.tests;
 
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -99,6 +100,15 @@ class PlanTest {
 		assertTrue(exercisteset.contains(dao.get(1)));
 		
 		
+	}
+	
+	@Test
+	public void test_many_to_many_mapping_day() {
+		plan = dao.get(1);
+		
+		assertNotNull(plan.getDays());
+		assertFalse(plan.getDays().isEmpty());
+		assertEquals(4, plan.getDays().size());
 	}
 
 }

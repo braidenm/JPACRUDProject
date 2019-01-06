@@ -1,6 +1,7 @@
 package com.skilldistillery.exercises.tests;
 
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -19,7 +20,10 @@ import org.junit.jupiter.api.Test;
 
 import com.skilldistillery.exercises.data.DayDAO;
 import com.skilldistillery.exercises.data.DayDAOImpl;
+import com.skilldistillery.exercises.data.ExerciseDAO;
+import com.skilldistillery.exercises.data.ExercisesDAOImpl;
 import com.skilldistillery.exercises.entities.Day;
+import com.skilldistillery.exercises.entities.Exercises;
 
 class DayTest {
 	
@@ -74,11 +78,11 @@ class DayTest {
 //	}
 	
 	//deletes rows, so only test when needed
-	@Test
-	@DisplayName("test that the dao delete returns true")
-	public void test_dao_delete() {
-		assertTrue(dao.destroy(7));
-	}
+//	@Test
+//	@DisplayName("test that the dao delete returns true")
+//	public void test_dao_delete() {
+//		assertTrue(dao.destroy(7));
+//	}
 	
 	//updates database so only use when needed
 //	@Test
@@ -104,6 +108,29 @@ class DayTest {
 		assertTrue(exercisteset.contains(dao.get(4)));
 		
 		
+	}
+	
+	@Test
+	public void test_many_to_many_mapping_plan() {
+		day = dao.get(1);
+		
+		assertNotNull(day.getPlans());
+		assertFalse(day.getPlans().isEmpty());
+		assertEquals(1, day.getPlans().size());
+	}
+	@Test
+	public void test_many_to_many_mapping_exercises() {
+		day = dao.get(1);
+		ExerciseDAO exerdao = new ExercisesDAOImpl();
+		//all the days exercises should contain number 2
+		Exercises exer2 = exerdao.get(2);
+		Exercises exer = exerdao.get(1);
+		
+		assertNotNull(day.getExercises());
+		assertFalse(day.getExercises().isEmpty());
+		assertEquals(9, day.getExercises().size());
+		assertTrue(day.getExercises().contains(exer));
+		assertTrue(day.getExercises().contains(exer2));
 	}
 
 }

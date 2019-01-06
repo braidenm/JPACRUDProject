@@ -20,7 +20,7 @@ public class Exercises {
 	private String description;
 	private int sets;
 	private int reps;
-	@Column(name="rest_in_min")
+	@Column(name="rest_in_sec")
 	private int rest;
 	public int getId() {
 		return id;

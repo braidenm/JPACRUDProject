@@ -1,5 +1,6 @@
 # JPA CRUD Project
 
+## Week 9 HomeWork (added another table and worked with different git branches)
 ## Week 8 Homework
 
 ### Technology Used
@@ -17,6 +18,21 @@
 * REG-EX
 * JSP and Controllers
 * Annotation Driven
+
+### Week 9 Updates
+
+With additional tables I used many to many mappings and added functionality to incorporate the new tables. There is a button when viewing plans, days, or exercises that will allow you to see what they are grouped with.
+
+The most difficult part of this addition is editing the mapped entities. For example: an exercise is apart of a workout day. When editing the day that the exercise is a part of, the day needs to be updated and the exercise. This all needs to be represented in the database as well. Also, if unselecting all of the attributes a null entry needs to be handled as well as remove those attributed in the database. See any of the update methods in a controller.
+
+Also, I lightly styled the pages.
+
+Stretch goals:
+* more connections between tables
+* links for the dropdown list items to go to their respective items
+* more tables to have a more fully functioning exercise app
+* Login page to see users specific exercises
+* short GIFs showing users how to do each exercise
 
 ### File Structure
 

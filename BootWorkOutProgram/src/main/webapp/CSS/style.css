@@ -6,7 +6,9 @@ header {
 	height: 200px;
 	padding-top: 70px;
 	border: solid;
-	
+	margin-bottom: 100px;
+	z-index: 0;
+		
 }
 
 #left{
@@ -14,10 +16,12 @@ header {
 	width: fit-content;
     box-shadow: 3px 3px black;
     height: fit-content;
+    background-color: rgba(209, 209, 224, .7)
 }
 .info{
 	border: groove;
 	height: fit-content;
+	background-color: rgba(209, 209, 224, .7)
 }
 .message{
 	color: red;
@@ -29,15 +33,23 @@ header {
 	border: groove;
 	width: fit-content;
 	height: fit-content;
+	background-color: rgba(209, 209, 224, .7)
 }
 #createpage{
 	border: groove;
 	width: fit-content;
 	height: fit-content;
+	background-color: rgba(209, 209, 224, .7)
 }
 
 form{
 	max-width: 500px;
+	margin: 10px;
+	float: left
+}
+
+button {
+	float: left;
 	margin: 10px;
 }
 
@@ -62,7 +74,53 @@ textarea:focus{
 	background-color: lightblue;
 }
 
-nav {
+.dropdown ul li{
+	z-index: 4;
+}
+
+.navbar {
+	z-index: 2;
+}
+
+.col-sm-4 a{     
+   display: block;     
+   position: relative;    
+   z-index: 1;     
+   padding: 2em;     
+   margin: -2em; 
+   background-color: rgba(209, 209, 224, .7);
+   border-style: solid;
+   border: solid;
+   border-bottom-style: thick;
+   height: 30px;
+   text-align: center;
+   text-decoration: none;
+   font-family: fantasy;
+   font-size: x-large;
+   color: black;
+   
+   
+   
+}
+.col-sm-4 a:hover{
+	color:blue;
+	background-color: #c0c0c0;
+}
+
+body{
+   background-image: url(/pics/gym.jpeg);
+  background-color: #cccccc; 
+  background-position: center; 
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: inherit;
+  margin-bottom: 500px;
+  background-attachment: fixed;
+}
+
+
+
+/* nav {
     position: sticky;
     margin: 0;
   	padding: 0;
@@ -73,34 +131,27 @@ nav {
     z-index: 1;
 	margin-bottom: 50px;
 	
-}
+}  */
 
-ul {
+/* ul {
   	list-style-type: none;
   	margin: 0;
   	padding: 0;
   	overflow: hidden;
   	background-color: #333;
     top: 0;
+  	float: left;
 }
 
 li {
     border-right: thin;
     border-right-style: solid;
     border-color: lightgrey;
-  	float: left;
 }
+ */
 
-#navUpdate {
-  display: block;
-  color: white;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-	
-}
 
-li a {
+/* li a {
   display: block;
   color: white;
   text-align: center;
@@ -110,12 +161,13 @@ li a {
 
 
 
-li a:hover {
+/* li a:hover {
   background-color: #111;
   text-decoration: none;
 }
-
-.active {
+ */
+/* .active {
   background-color: #4CAF50;
-}
+  
+} */
 

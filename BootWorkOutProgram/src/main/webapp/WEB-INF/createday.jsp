@@ -6,7 +6,7 @@
 <html lang="en">
   <head>
     <!-- Required meta tags -->
-    >meta charset="utf-8">
+    <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -27,13 +27,13 @@
 			          <li><a href="createPlan.do">Create Plan</a></li>
 			        </ul>
 			      </li>
-			      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Days<span class="caret"></span></a>
+			      <li class="dropdown active"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Days<span class="caret"></span></a>
 			        <ul class="dropdown-menu">
 			          <li><a href="day.do">Days</a></li>
-			          <li><a href="createDay.do">Create Day</a></li>
+			          <li><a href="createday.do">Create Day</a></li>
 			        </ul>
 			      </li>
-			      <li class="dropdown active"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Exercises<span class="caret"></span></a>
+			      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Exercises<span class="caret"></span></a>
 			        <ul class="dropdown-menu">
 			          <li><a href="exercises.do">Exercises</a></li>
 			          <li><a href="createExercise.do">Create Exercise</a></li>
@@ -43,43 +43,25 @@
 			  </div>
 			</nav>
 	
-	  
-	  
-	 	 Create a Work-Out Exercise
+	  		
+	  		
+	  	Create a Work-Out Day
 	  
 	  </header>
-	  
+	   
 
 		<div class="container" id="createpage">
-			<form action="createExercise.do" method="post">
+			<form action="createDay.do" method="post">
 				<div>
 					<label for="name">Name: </label>
 					<input id="name" name="name" maxlength="75" type="text"  required />
 				</div>
 				<div>
-					<label for="category">Category: </label>
-					<input id="category" name="category" maxlength="75" type="text"  required />
-				</div>
-				<div>
-					<label for="description">Description: </label>
-				<div>	
-					<textarea id="description" maxlength="250" name="description" required placeholder="Enter the Description" cols="35" rows="3"></textarea>
-				</div>
-				</div>
-				<div>
-					<label for="sets">Sets: </label>
-					<input id="sets" name="sets" type="number" value="4" required min="1" />
-				</div>
-				<div>
-					<label for="reps">Reps: </label>
-					<input id="reps" name="reps" type="number" value="10" required min="1" />
-				</div>
-				<div>
-					<label for="rest">Rest (in seconds): </label>
-					<input id="rest" name="rest" type="number" value="30"  required min="0" />
+					<label for="day">When/how often: </label>
+					<input id="day" name="day" maxlength="75" type="text"  required />
 				</div>
 				<input type="hidden" id="id" name="id" value="0"/>
-				<input type="submit" class="btn btn-primary" value="Create"/>
+				<input type="submit" class="btn btn-primary" value="Create Day"/>
 			</form>
 	
 	</div>

@@ -1,10 +1,15 @@
 package com.skilldistillery.exercises.entities;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -20,8 +25,19 @@ public class Exercises {
 	private String description;
 	private int sets;
 	private int reps;
-	@Column(name="rest_in_min")
+	@Column(name="rest_in_sec")
 	private int rest;
+	@ManyToMany(mappedBy="exercises", fetch=FetchType.EAGER)
+	private List<Day> days;
+	
+	
+	
+	public List<Day> getDays() {
+		return days;
+	}
+	public void setDays(List<Day> days) {
+		this.days = days;
+	}
 	public int getId() {
 		return id;
 	}
@@ -128,6 +144,24 @@ public class Exercises {
 	}
 	public Exercises() {
 		super();
+	}
+	
+	public void addDay(Day day) {
+
+		if (days == null) {
+			days = new ArrayList<Day>();
+		}
+		if (!days.contains(day)) {
+			days.add(day);
+			day.addExercise(this);
+		}
+	}
+
+	public void removeDay(Day day) {
+		if (days != null && days.contains(day)) {
+			days.remove(day);
+			day.removeExercise(this);
+		}
 	}
 	
 	

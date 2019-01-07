@@ -7,141 +7,69 @@
 <head>
 <!-- Required meta tags -->
 <meta charset="utf-8">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<!-- Bootstrap CSS -->
-
-<link rel="stylesheet"
-	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
-	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
-	crossorigin="anonymous">
-<link href="/CSS/style.css" rel="stylesheet" type="text/css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link href="CSS/style.css" rel="stylesheet" type="text/css">
 <title>SQL CRUD</title>
 </head>
 <body>
 
-	<header> Welcome to Work-Out Exercises MYSQL using JPA </header>
-	<nav>
-		<ul>
-			<li><a class="active" href="/.do">Home</a></li>
-			<li><a href="create.do">Create</a></li>
-		</ul>
+	<header> 
+	
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+	  <div class="container-fluid">
+	   
+	    <ul class="nav navbar-nav">
+	      <li class="active"><a href="home.do">Home</a></li>
+	      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Plans<span class="caret"></span></a>
+	        <ul class="dropdown-menu">
+	          <li><a href="plan.do">Plans</a></li>
+	          <li><a href="createPlan.do">Create Plan</a></li>
+	        </ul>
+	      </li>
+	      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Days<span class="caret"></span></a>
+	        <ul class="dropdown-menu">
+	          <li><a href="day.do">Days</a></li>
+	          <li><a href="createDay.do">Create Day</a></li>
+	        </ul>
+	      </li>
+	      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Exercises<span class="caret"></span></a>
+	        <ul class="dropdown-menu">
+	          <li><a href="exercises.do">Exercises</a></li>
+	          <li><a href="createExercise.do">Create Exercise</a></li>
+	        </ul>
+	      </li>
+	    </ul>
+	  </div>
 	</nav>
+	
 
-	<div class="container">
-
-
-		<div class="row">
-			<div class="col-sm-6" id="left">
-				<h3>Find an Exercise:</h3>
-				<div>
-					<form action="get.do" method="post" id="number">
-						<label for="id">Index Number: </label> <input type="number"
-							name="id" required min="1" /> <input type="submit"
-							class="btn btn-primary" value="Get Exercise" />
-					</form>
+	Welcome to Work-Out Exercises MYSQL using JPA </header>
+	<div id="backgroundHome">
+		<div class="container">
+	
+			<div class="row">
+				<div class="col-sm-4">
+				
+					<a href="plan.do">Go to Work-out Plans</a>
+	
 				</div>
-				<div>
-					<form action="search.do" method="post" id="search">
-						<label for="search">Search Word(s): </label> <input type="text"
-							name="search" required /> <input type="submit"
-							class="btn btn-primary" value="Get Exercise(s)" />
-					</form>
+				<div class="col-sm-4">
+				
+					<a href="day.do">Go to Work-out Days</a>
+	
 				</div>
-				<div>
-					<form action="getall.do" method="post" id="all">
-						<input type="submit" class="btn btn-primary"
-							value="Get All Exercises" />
-					</form>
+				<div class="col-sm-4">
+				
+					<a href="exercises.do">Go to Work-out Exercises</a>
+	
 				</div>
-				<div></div>
-
-			</div>
-			<div class="col-sm-6">
-				<c:if test="${not empty exer}">
-					<div class="info">
-						<strong>Exercise ID:</Strong> ${exer.id} 
-						<br> 
-						<strong>Name: </strong>${exer.name} 
-						<br> 
-						<strong>Category: </strong>${exer.category }
-						<br> 
-						<strong>Description: </strong>${exer.description } 
-						<br>
-						<strong>Sets:</strong> ${exer.sets } 
-						<br> 
-						<strong>Reps per set:</strong> ${exer.reps } 
-						<br> 
-						<strong>Rest in-between sets (in seconds):</strong> ${exer.rest}
-
-						<div class="nav" id="bottomNav">
-							<div>
-								<form action="update.do" method="get">
-									<input name="id" value="${exer.id}" type="hidden" /> <input
-										type="submit" class="btn btn-primary" value="Edit Exercise" />
-								</form>
-							</div>
-							<div>
-								<form action="destroy.do" method="post">
-									<input name="delete" value="${exer.id }" type="hidden" /> <input
-											type="submit" class="btn btn-danger" value="Delete Exercise"
-											data-toggle="confirmation" />
-								</form>
-
-							</div>
-
-						</div>
-					</div>
-				</c:if>
-				<c:if test="${not empty exerList }">
-					<c:forEach var="exer" items="${exerList }">
-						<div class="info">
-
-							<strong>Exercise ID:</strong> ${exer.id}
-							<br>
-							<strong>Name:</strong>${exer.name} 
-							<br> 
-							<strong>Category:</strong> ${exer.category }
-							<br> 
-							<strong>Description:</strong> ${exer.description } 
-							<br>
-							<strong>Sets:</strong> ${exer.sets } 
-							<br> 
-							<strong>Reps per set: </strong>${exer.reps } 
-							<br> 
-							<strong>Rest in-between sets (in seconds):</strong> ${exer.rest}
-
-							<div class="nav" id="bottomNav">
-								<div>
-									<form action="update.do" method="get">
-										<input name="id" value="${exer.id}" type="hidden" /> <input
-											type="submit" class="btn btn-primary" value="Edit Exercise" />
-									</form>
-								</div>
-								<div>
-									<form action="destroy.do" method="post">
-										<input name="delete" value="${exer.id }" type="hidden" /> <input
-											   type="submit" class="btn btn-danger" value="Delete Exercise"
-											   data-toggle="confirmation" />
-									</form>
-								</div>
-
-							</div>
-						</div>
-					</c:forEach>
-				</c:if>
-				<c:if test="${deleted }">
-					<div class="message">Exercise ${exerid} Deleted</div>
-				</c:if>
-				<c:if test="${notFound }">
-					<div class="message">No Exercises Were Found</div>
-
-				</c:if>
-
+	
 			</div>
 		</div>
 	</div>
-
 	<!-- Optional JavaScript -->
 	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"

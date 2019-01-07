@@ -1,6 +1,7 @@
 package com.skilldistillery.exercises.data;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.EntityManager;
@@ -74,6 +75,13 @@ public class ExercisesDAOImpl implements ExerciseDAO {
 		}
 		
 		return exerciseset;
+	}
+	@Override
+	public List<Exercises> getAll() {
+		
+		String query = "select e from Exercises e";
+		
+		return em.createQuery(query, Exercises.class).getResultList();
 	}
 
 }

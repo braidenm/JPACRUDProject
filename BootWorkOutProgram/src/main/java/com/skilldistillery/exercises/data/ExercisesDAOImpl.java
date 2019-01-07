@@ -5,8 +5,6 @@ import java.util.List;
 import java.util.Set;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 
@@ -17,26 +15,26 @@ import com.skilldistillery.exercises.entities.Exercises;
 @Service
 @Transactional
 public class ExercisesDAOImpl implements ExerciseDAO {
-	private static EntityManagerFactory emf = Persistence.createEntityManagerFactory("ExercisesDB");
-	private EntityManager em = emf.createEntityManager();
-//	@PersistenceContext
-//	private EntityManager em;
+//	private static EntityManagerFactory emf = Persistence.createEntityManagerFactory("ExercisesDB");
+//	private EntityManager em = emf.createEntityManager();
+	@PersistenceContext
+	private EntityManager em;
 
 	@Override
 	public Exercises create(Exercises exercise) {
-		em.getTransaction().begin();
+//		em.getTransaction().begin();
 		
 		em.persist(exercise);
 		
-		em.flush();
+//		em.flush();
 		
-		em.getTransaction().commit();
+//		em.getTransaction().commit();
 		return exercise;
 	}
 
 	@Override
 	public Exercises update(int id, Exercises exercise) {
-		em.getTransaction().begin();
+//		em.getTransaction().begin();
 		Exercises managed = em.find(Exercises.class, id);
 		
 		managed.setName(exercise.getName());
@@ -46,19 +44,19 @@ public class ExercisesDAOImpl implements ExerciseDAO {
 		managed.setReps(exercise.getReps());
 		managed.setRest(exercise.getRest());
 		
-		em.flush();
-		em.getTransaction().commit();
+//		em.flush();
+//		em.getTransaction().commit();
 		
 		return managed;
 	}
 
 	@Override
 	public boolean destroy(int id) {
-		em.getTransaction().begin();
+//		em.getTransaction().begin();
 		Exercises ex = em.find(Exercises.class, id);
 		em.remove(ex);
 		
-		em.getTransaction().commit();
+//		em.getTransaction().commit();
 		
 		return !em.contains(ex);
 	}

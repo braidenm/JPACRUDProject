@@ -86,18 +86,19 @@ textarea:focus{
    display: block;     
    position: relative;    
    z-index: 1;     
-   padding: 2em;     
-   margin: -2em; 
+   padding: 3em;     
+ /*   margin: -2em; */ 
    background-color: rgba(209, 209, 224, .7);
    border-style: solid;
    border: solid;
    border-bottom-style: thick;
-   height: 30px;
    text-align: center;
    text-decoration: none;
-   font-family: fantasy;
-   font-size: x-large;
+   font-family: serif;
+   font-size: large;
+   font-weight: bolder;
    color: black;
+   vertical-align: middle;
    
    
    
@@ -108,7 +109,7 @@ textarea:focus{
 }
 
 body{
-   background-image: url(/pics/gym.jpeg);
+  background-image: url('../pics/gym.jpeg');
   background-color: #cccccc; 
   background-position: center; 
   background-repeat: no-repeat;
@@ -117,6 +118,37 @@ body{
   margin-bottom: 500px;
   background-attachment: fixed;
 }
+/* #planPage{
+  background-image: url('../pics/superJackedSteve.png');
+  background-color: #cccccc; 
+  background-position: center; 
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: inherit;
+  margin-bottom: 500px;
+  background-attachment: fixed;
+}
+#ExerPage{
+  background-image: url('../pics/StevesFace.png');
+  background-color: #cccccc; 
+  background-position: center; 
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: inherit;
+  margin-bottom: 500px;
+  background-attachment: fixed;
+ 
+}
+#dayPage{
+  background-image: url('../pics/jackedSteve.png');
+  background-color: #cccccc; 
+  background-position: relative; 
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin-bottom: 500px;
+  background-attachment: fixed;
+  z-index: 0;
+} */
 
 
 

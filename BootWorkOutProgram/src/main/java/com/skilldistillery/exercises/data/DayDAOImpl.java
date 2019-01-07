@@ -36,8 +36,7 @@ public class DayDAOImpl implements DayDAO {
 		em.getTransaction().begin();
 		Day managed = em.find(Day.class, id);
 		
-		managed.setName(day.getName());
-		managed.setDay(day.getDay());
+		managed = day;
 		
 		em.flush();
 		em.getTransaction().commit();
@@ -48,12 +47,13 @@ public class DayDAOImpl implements DayDAO {
 	@Override
 	public boolean destroy(int id) {
 		em.getTransaction().begin();
-		Day ex = em.find(Day.class, id);
-		em.remove(ex);
+		Day day = em.find(Day.class, id);
+		
+		em.remove(day);
 		
 		em.getTransaction().commit();
 		
-		return !em.contains(ex);
+		return !em.contains(day);
 	}
 
 	@Override

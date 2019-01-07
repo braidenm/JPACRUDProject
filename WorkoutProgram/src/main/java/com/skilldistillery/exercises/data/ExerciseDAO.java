@@ -1,5 +1,6 @@
 package com.skilldistillery.exercises.data;
 
+import java.util.List;
 import java.util.Set;
 
 import com.skilldistillery.exercises.entities.Exercises;
@@ -10,5 +11,7 @@ public interface ExerciseDAO {
 	public boolean destroy(int id);
 	public Exercises get(int id);
 	public Set<Exercises> search(String words);
+	public List<Exercises> getAll();
+
 
 }

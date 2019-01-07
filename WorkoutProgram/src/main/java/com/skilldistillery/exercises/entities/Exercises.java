@@ -1,9 +1,11 @@
 package com.skilldistillery.exercises.entities;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -25,7 +27,7 @@ public class Exercises {
 	private int reps;
 	@Column(name="rest_in_sec")
 	private int rest;
-	@ManyToMany(mappedBy="exercises")
+	@ManyToMany(mappedBy="exercises", fetch=FetchType.EAGER)
 	private List<Day> days;
 	
 	
@@ -142,6 +144,24 @@ public class Exercises {
 	}
 	public Exercises() {
 		super();
+	}
+	
+	public void addDay(Day day) {
+
+		if (days == null) {
+			days = new ArrayList<Day>();
+		}
+		if (!days.contains(day)) {
+			days.add(day);
+			day.addExercise(this);
+		}
+	}
+
+	public void removeDay(Day day) {
+		if (days != null && days.contains(day)) {
+			days.remove(day);
+			day.removeExercise(this);
+		}
 	}
 	
 	

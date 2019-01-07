@@ -1,6 +1,7 @@
 package com.skilldistillery.exercises.data;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.EntityManager;
@@ -69,6 +70,13 @@ public class PlanDAOImpl implements PlanDAO {
 		}
 		
 		return planSet;
+	}
+	@Override
+	public List<Plan> getAll() {
+		
+		String query = "select p from Plan p";
+		
+		return em.createQuery(query, Plan.class).getResultList();
 	}
 
 }

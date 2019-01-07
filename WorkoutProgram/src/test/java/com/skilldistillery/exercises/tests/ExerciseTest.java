@@ -125,5 +125,11 @@ class ExerciseTest {
 		assertFalse(ex.getDays().isEmpty());
 		assertEquals(1, ex.getDays().size());
 	}
+	
+	@Test
+	public void test_get_all_method() {
+		assertNotNull(dao.getAll());
+		assertEquals(34, dao.getAll().size());
+	}
 
 }

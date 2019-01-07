@@ -1,8 +1,10 @@
 package com.skilldistillery.exercises.entities;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -12,19 +14,16 @@ import javax.persistence.ManyToMany;
 
 @Entity
 public class Plan {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private String name;
-	
-	@ManyToMany
-	@JoinTable(name="day_plan",
-			joinColumns=@JoinColumn(name="plan_id"),
-			inverseJoinColumns=@JoinColumn(name="day_id"))
+
+	@ManyToMany(fetch=FetchType.EAGER)
+	@JoinTable(name = "day_plan", joinColumns = @JoinColumn(name = "plan_id"), inverseJoinColumns = @JoinColumn(name = "day_id"))
 	private List<Day> days;
-	
-	
+
 	public List<Day> getDays() {
 		return days;
 	}
@@ -36,16 +35,19 @@ public class Plan {
 	public int getId() {
 		return id;
 	}
-	
+
 	public void setId(int id) {
 		this.id = id;
 	}
+
 	public String getName() {
 		return name;
 	}
+
 	public void setName(String name) {
 		this.name = name;
 	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -54,6 +56,7 @@ public class Plan {
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		return result;
 	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -72,17 +75,38 @@ public class Plan {
 			return false;
 		return true;
 	}
+
 	public Plan(int id, String name) {
 		super();
 		this.id = id;
 		this.name = name;
 	}
+
 	public Plan() {
 		super();
 	}
+
 	@Override
 	public String toString() {
 		return "Plan [id=" + id + ", name=" + name + "]";
+	}
+
+	public void addDay(Day day) {
+
+		if (days == null) {
+			days = new ArrayList<Day>();
+		}
+		if (!days.contains(day)) {
+			days.add(day);
+			day.addPlan(this);
+		}
+	}
+
+	public void removeDay(Day day) {
+		if (days != null && days.contains(day)) {
+			days.remove(day);
+			day.removePlan(this);
+		}
 	}
 
 }

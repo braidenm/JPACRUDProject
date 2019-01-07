@@ -36,7 +36,7 @@ public class PlanDAOImpl implements PlanDAO {
 		em.getTransaction().begin();
 		Plan managed = em.find(Plan.class, id);
 		
-		managed.setName(plan.getName());
+		managed = plan;
 		
 		em.flush();
 		em.getTransaction().commit();

@@ -6,13 +6,13 @@
 <html lang="en">
   <head>
     <!-- Required meta tags -->
-    >meta charset="utf-8">
+    <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <link href="CSS/style.css" rel="stylesheet" type="text/css">
-    <title>Create</title>
+    <title>Update</title>
   </head>
   <body>
 	  <header>
@@ -20,20 +20,20 @@
 			  <div class="container-fluid">
 			   
 			    <ul class="nav navbar-nav">
-			      <li><a href="home.do">Home</a></li>
+			      <li class="active"><a href="home.do">Home</a></li>
 			      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Plans<span class="caret"></span></a>
 			        <ul class="dropdown-menu">
 			          <li><a href="plan.do">Plans</a></li>
 			          <li><a href="createPlan.do">Create Plan</a></li>
 			        </ul>
 			      </li>
-			      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Days<span class="caret"></span></a>
+			      <li class="dropdown active"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Days<span class="caret"></span></a>
 			        <ul class="dropdown-menu">
 			          <li><a href="day.do">Days</a></li>
 			          <li><a href="createDay.do">Create Day</a></li>
 			        </ul>
 			      </li>
-			      <li class="dropdown active"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Exercises<span class="caret"></span></a>
+			      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Exercises<span class="caret"></span></a>
 			        <ul class="dropdown-menu">
 			          <li><a href="exercises.do">Exercises</a></li>
 			          <li><a href="createExercise.do">Create Exercise</a></li>
@@ -43,44 +43,54 @@
 			  </div>
 			</nav>
 	
-	  
-	  
-	 	 Create a Work-Out Exercise
-	  
+	  		
+	  	Update a Work-out Day
+	  	
 	  </header>
-	  
+   	 
 
-		<div class="container" id="createpage">
-			<form action="createExercise.do" method="post">
-				<div>
-					<label for="name">Name: </label>
-					<input id="name" name="name" maxlength="75" type="text"  required />
-				</div>
-				<div>
-					<label for="category">Category: </label>
-					<input id="category" name="category" maxlength="75" type="text"  required />
-				</div>
-				<div>
-					<label for="description">Description: </label>
-				<div>	
-					<textarea id="description" maxlength="250" name="description" required placeholder="Enter the Description" cols="35" rows="3"></textarea>
-				</div>
-				</div>
-				<div>
-					<label for="sets">Sets: </label>
-					<input id="sets" name="sets" type="number" value="4" required min="1" />
-				</div>
-				<div>
-					<label for="reps">Reps: </label>
-					<input id="reps" name="reps" type="number" value="10" required min="1" />
-				</div>
-				<div>
-					<label for="rest">Rest (in seconds): </label>
-					<input id="rest" name="rest" type="number" value="30"  required min="0" />
-				</div>
-				<input type="hidden" id="id" name="id" value="0"/>
-				<input type="submit" class="btn btn-primary" value="Create"/>
-			</form>
+	<div class="container" id="update">
+		<form action="updateDay.do" method="post">
+			<div>
+				<label for="id">Day ID: ${day.id }</label>
+				<input type="hidden" id="id" name="id" value="${day.id}"/>
+			</div>
+			<div>
+				<label for="name">Name: </label>
+				<input id="name" name="name" type="text" maxlength="75" value="${day.name}" required />
+			</div>
+			<div>
+				<label for="day">Day of Week: </label>
+				<input id="day" name="day" type="text" maxlength="75" value="${day.day}" required />
+			</div>
+			<div>
+				<label for="plans"><strong>Plans: </strong></label>
+				<br>
+				<c:forEach var="plan" items="${day.plans}">
+					<input id="plans" name="plans" type="checkbox" value="${plan.id}" checked>
+					<strong>Plan id: </strong>${plan.id} <strong>Name: </strong>${plan.name}<br>
+				</c:forEach>
+				<c:forEach var="plan" items="${remainingPlans}">
+					<input id="plans" name="plans" type="checkbox" value="${plan.id}">
+					<strong>Plan id: </strong>${plan.id} <strong>Name: </strong>${plan.name}<br>
+				</c:forEach>
+			</div>
+			<div>
+			<br>
+				<label for="exercises"><strong>Exercises: </strong></label>
+				<br>
+				<c:forEach var="exer" items="${day.exercises}">
+					<input id="exercises" name="exercises" type="checkbox" value="${exer.id}" checked>
+					<strong>Exercise id: </strong>${exer.id} <strong>Name: </strong>${exer.name}<br>
+				</c:forEach>
+				<c:forEach var="exer" items="${remainingExercises}">
+					<input id="exercises" name="exercises" type="checkbox" value="${exer.id}">
+					<strong>Exercise id: </strong>${exer.id} <strong>Name: </strong>${exer.name}<br>
+				</c:forEach>
+			</div>
+			
+			<input type="submit" class="btn btn-primary" value="Update"/>
+		</form>
 	
 	</div>
 

@@ -1,6 +1,7 @@
 package com.skilldistillery.exercises.data;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.EntityManager;
@@ -8,6 +9,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 import com.skilldistillery.exercises.entities.Day;
+import com.skilldistillery.exercises.entities.Plan;
 
 public class DayDAOImpl implements DayDAO {
 	private static EntityManagerFactory emf = Persistence.createEntityManagerFactory("ExercisesDB");
@@ -70,6 +72,13 @@ public class DayDAOImpl implements DayDAO {
 		}
 		
 		return daySet;
+	}
+	@Override
+	public List<Plan> getAll() {
+		
+		String query = "select p from Plan p";
+		
+		return em.createQuery(query, Plan.class).getResultList();
 	}
 
 }
